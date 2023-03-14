@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html >
+<head>
+ <title>Document</title>
+ <style>
+    body{
+        background-size: 100% 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #container{
+        text-align: center;
+        position: relative;
+        top: 50px;
+        width: 60vw;
+        height: 80vh;
+        background-color: rgba(120 , 120, 120,  0.44);
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px black;
+    }
+    #Time{
+        font-size: 80px;
+        font-family: Arial, Helvetica, sans-serif;
+        border: none;
+    }
+    #container:hover{
+        background-color: palevioletred;
+        box-shadow: -35px 35px 10px yellow,35px -35px 0px aqua,-35px -35px 0px orange,35px 35px 0px violet;
+    }
+ </style>
+</head>
+<body onload="clock()" id="a" >
+    <div id="container">
+        <h1 id="Time"></h1>
+        <h1 id="Date"></h1>
+        <h1 id="Day"></h1>
+    </div>
+    <h1 id="MS"></h1>
+    <script>
+        function clock()
+        {
+            var date=new Date()
+            var hh=date.getHours()
+            var mm=date.getMinutes()
+            var ss=date.getSeconds()
+            var ms=date.getMilliseconds()
+            var day=date.getDay()
+            var dt=date.getDate()
+            var mo=date.getMonth()
+            var yy=date.getFullYear()
+            if(mo==0)
+            {
+                mo="jan"
+            }
+            else if(mo==1)
+            {
+                mo="Feb"
+            }
+            else if(mo==2)
+            {
+                mo="Mar"
+            }
+            else if(mo==3)
+            {
+                mo="Apr"
+            }
+            else if(mo==4)
+            {
+                mo="May"
+            }
+            else if(mo==5)
+            {
+                mo="Jun"
+            }
+            else if(mo==6)
+            {
+                mo="Jul"
+            }
+            else if(mo==7)
+            {
+                mo="Aug"
+            }
+            else if(mo==8)
+            {
+                mo="Sep"
+            }
+            else if(mo==9)
+            {
+                mo="Oct"
+            }
+            else if(mo==10)
+            {
+                mo="Nov"
+            }
+            else 
+            {
+                mo="Dec"
+            }
+            switch(day)
+            {
+                case 0:
+                    day="Sunday"
+                    document.getElementById("a").style.backgroundImage=""
+                    break;
+                case 1:
+                    day="Monday"
+                    break;
+                case 2:
+                    day="Tuesday"
+                    break;
+              case 3:
+                    day="Wednesday"
+                    break;
+                case 4:
+                    day="Thursday"
+                    break;
+                case 5:
+                    day="Friday"
+                    break;
+                case 6:
+                    day="Saturday"
+                    break;
+             }
+             var am_pm="AM"
+             if(hh>=12)
+             {
+                am_pm="PM"
+                if(hh>=13)
+                {
+                    hh-=12;
+                }
+             }
+             if(hh==0)
+             {
+                hh=12;
+             }
+             var finalTime=hh+":"+mm+":"+ss+"  "+am_pm
+             document.getElementById("Time").innerHTML=finalTime
+             var finalDate=dt+"/"+mo+"/"+yy
+
+             document.getElementById("Date").innerHTML=finalDate
+             document.getElementById("Day").innerHTML=day
+             document.getElementById("MS").innerHTML=ms
+             var timer=setTimeout(function(){clock()},1000)
+              }
+              function greet()
+              {
+                var greet=new Date()
+                var hh=greet.getHours()
+                if(hh>=6 && hh<12)
+                {
+                    window.alert("Good Morning")
+                }
+                else if(hh>=12 && hh<16)
+                {
+                    window.alert("Good Afternoon")
+                }
+                else if(hh>=16)
+                {
+                    window.alert("Good Evening")
+                }
+                else 
+                {
+                    window.alert("Good Night")
+                }
+              }
+              greet()
+    </script>
+</body>
+</html>
